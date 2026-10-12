@@ -55,7 +55,6 @@ function App() {
     setShowForm(false)
   }
 
-  // Add or update a recipe
   async function saveRecipe(event) {
     event.preventDefault()
     setMessage('')
