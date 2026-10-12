@@ -18,8 +18,6 @@ function App() {
   const [ingredients, setIngredients] = useState('')
   const [instructions, setInstructions] = useState('')
   const [editingId, setEditingId] = useState(null)
-
-  // Load recipes from MongoDB through the Node.js API
   async function loadRecipes() {
     try {
       const response = await fetch(API)
@@ -42,12 +40,11 @@ function App() {
     loadRecipes()
   }, [])
 
-  // Search recipes by name
   const filteredRecipes = recipes.filter(recipe =>
     recipe.name.toLowerCase().includes(search.toLowerCase())
   )
 
-  // Clear the form
+  
   function clearForm() {
     setName('')
     setCategory('Breakfast')
@@ -99,8 +96,6 @@ function App() {
       setMessage('Could not save the recipe. Please check the backend.')
     }
   }
-
-  // Open the form to edit a recipe
   function editRecipe(recipe) {
     setName(recipe.name)
     setCategory(recipe.category || 'Breakfast')
@@ -113,8 +108,6 @@ function App() {
     setMessage('')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-
-  // Delete a recipe
   async function deleteRecipe(id) {
     const confirmed = window.confirm('Are you sure you want to delete this recipe?')
 
@@ -136,8 +129,6 @@ function App() {
       setMessage('Could not delete the recipe. Please check the backend.')
     }
   }
-
-  // Display a neutral image when no recipe image is supplied
   function recipeImage(recipe) {
     const colors = {
       Breakfast: 'F8E8C8',
